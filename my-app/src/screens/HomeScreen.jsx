@@ -30,15 +30,8 @@ const HomeScreen = () => {
 
   useEffect(() => {
     ;(async () => {
-      console.log('Calling here')
-      // dispatch(incrementCount())
-      //   .then(res => {
-      //     dispatch(listImages())
-      //   })
-      //   .catch(err => {
-      //     console.log(err)
-      //   })
-      dispatch(listImages())
+      await dispatch(incrementCount())
+      await dispatch(listImages())
     })()
   }, [])
   return (
