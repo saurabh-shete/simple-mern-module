@@ -9,7 +9,7 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const redirect = '/upload'
+  const redirect = '/home'
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { loading, error, userInfo } = useSelector(state => state.userLogin)
