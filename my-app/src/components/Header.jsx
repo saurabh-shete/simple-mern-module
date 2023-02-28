@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useCookies } from 'react-cookie'
 import { logout } from '../actions/userActions'
 import { useNavigate } from 'react-router-dom'
-import { listImages } from '../actions/imageAction'
+import { LinkContainer } from 'react-router-bootstrap'
 const Header = () => {
   const [cookie, setUserCookie, removeUserCookie] = useCookies()
   const dispatch = useDispatch()
@@ -19,14 +19,20 @@ const Header = () => {
   return (
     <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
       <Container>
-        <Navbar.Brand href='/upload'>Hello</Navbar.Brand>
+        <LinkContainer to='/home'>
+          <Navbar.Brand>Hello</Navbar.Brand>
+        </LinkContainer>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
           {userInfo ? (
             <>
               <Nav className='me-auto'>
-                <Nav.Link href='/upload'>Upload</Nav.Link>
-                <Nav.Link href='/home'>Show Images</Nav.Link>
+                <LinkContainer to='/upload'>
+                  <Nav.Link>Upload</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/home'>
+                  <Nav.Link>Show Images</Nav.Link>
+                </LinkContainer>
               </Nav>
               <Nav className='ms-auto'>
                 <Nav.Link onClick={logoutHandler}>Logout</Nav.Link>
@@ -34,8 +40,12 @@ const Header = () => {
             </>
           ) : (
             <Nav className='ms-auto'>
-              <Nav.Link href='/login'>Sign In</Nav.Link>
-              <Nav.Link href='/register'>Register</Nav.Link>
+              <LinkContainer to='/login'>
+                <Nav.Link>Sign In</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/register'>
+                <Nav.Link>Register</Nav.Link>
+              </LinkContainer>
             </Nav>
           )}
         </Navbar.Collapse>
